@@ -44,11 +44,40 @@ function tahnoutJmeno() {
     jmena.splice(vyherniIndex, 1);
 
     // Výherní jméno si uložíme do pole k ostatním výherním
-    tazenaJmena.push(vyherniJmeno);
+
+    // Výherní jméno přidáváme nakonec
+    //tazenaJmena.push(vyherniJmeno);
+
+    //Výherní jméno přidáváme na začátek
+    tazenaJmena.unshift(vyherniJmeno);
 
     let vyherce = document.querySelector('#vyherka');
     vyherce.textContent = vyherniJmeno;
 
     let seznam = document.querySelector('#seznam');
     seznam.textContent = tazenaJmena;
+
+    //Počítadlo
+    let pocitadlo = tazenaJmena.length;
+    document.getElementById("pocitadlo").textContent = "Počet vyvolaných studentek: " + pocitadlo;
+
+
+}
+
+
+//Tlačítko reset
+function reset() {
+    while (tazenaJmena.length > 0) {
+        let jmeno = tazenaJmena.pop();
+        jmena.push(jmeno);
+    }
+    let pocitadlo = tazenaJmena.length;
+    document.getElementById("pocitadlo").textContent = "Počet vyvolaných studentek: " + pocitadlo;
+
+    let vyherce = document.querySelector('#vyherka');
+    vyherce.textContent = null;
+
+    let seznam = document.querySelector('#seznam');
+    seznam.textContent = null;
+
 }

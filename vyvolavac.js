@@ -51,16 +51,9 @@ function tahnoutJmeno() {
     //Výherní jméno přidáváme na začátek
     tazenaJmena.unshift(vyherniJmeno);
 
-    let vyherce = document.querySelector('#vyherka');
-    vyherce.textContent = vyherniJmeno;
-
-    let seznam = document.querySelector('#seznam');
-    seznam.textContent = tazenaJmena;
-
-    //Počítadlo
-    let pocitadlo = tazenaJmena.length;
-    document.getElementById("pocitadlo").textContent = "Počet vyvolaných studentek: " + pocitadlo;
-
+    nastavTextContent("vyherka", vyherniJmeno);
+    nastavTextContent("seznam", tazenaJmena);
+    nastavTextContent("pocitadlo", "Počet vyvolaných studentek: " + tazenaJmena.length);
 
 }
 
@@ -68,16 +61,16 @@ function tahnoutJmeno() {
 //Tlačítko reset
 function reset() {
     while (tazenaJmena.length > 0) {
-        let jmeno = tazenaJmena.pop();
-        jmena.push(jmeno);
+        jmena.push(tazenaJmena.pop());
     }
-    let pocitadlo = tazenaJmena.length;
-    document.getElementById("pocitadlo").textContent = "Počet vyvolaných studentek: " + pocitadlo;
 
-    let vyherce = document.querySelector('#vyherka');
-    vyherce.textContent = null;
+    nastavTextContent("pocitadlo", "Počet vyvolaných studentek: " + tazenaJmena.length);
+    nastavTextContent("vyherka", vyherce = null);
+    nastavTextContent("seznam", seznam = null);
+}
 
-    let seznam = document.querySelector('#seznam');
-    seznam.textContent = null;
+function nastavTextContent(id, obsah) {
+    let element = document.getElementById(id);
+    element.textContent = obsah;
 
 }
